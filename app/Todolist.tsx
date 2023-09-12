@@ -77,7 +77,7 @@ const Todolist: React.FC = () => {
         {todos.map((todo, index) => (
           <li key={index} className="flex justify-between items-center my-2 p-4 text-blue-500 bg-sky-200 w-full border-4 border-white rounded-md">
             {editIndex === index ? (
-              <div className='flex flex-row items-center justify-end'>
+              <div className='flex flex-row items-center justify-between'>
                 <input
                   type="text"
                   value={editedText}
@@ -97,7 +97,7 @@ const Todolist: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <div className='flex flex-row items-center justify-end'>
+              <div className='flex flex-row items-center justify-between w-[20rem]'>
                 <div>
                   <input
                     type="checkbox"
@@ -105,15 +105,16 @@ const Todolist: React.FC = () => {
                     checked={todo.completed}
                     onChange={() => toggleTodo(index)}
                   />
-                  <span className={`${todo.completed ? 'line-through' : ''}`}>
+                  <span className={`${todo.completed ? 'line-through' : ''} `}>
                     {todo.text}
                   </span>
                 </div>
-                <div className='flex flex-row gap-4 ml-[13rem]'>
-                  <AiTwotoneEdit size={"25px"} onClick={() => startEditing(index)} />
+                <div className='flex flex-row gap-4'>
+                  <AiTwotoneEdit size={"25px"} onClick={() => startEditing(index)} className='mx-2' />
                   <AiTwotoneDelete 
                     onClick={() => removeTodo(index)}
                     size={'25px'}
+                    className='mx-2'
                   />
                 </div>
               </div>
